@@ -19,7 +19,7 @@ body {
     background-color: #000;
     image-rendering: pixelated;
     font-family: "Omori Normal", monospace;
-    overflow: hidden;
+    overflow: auto;
     color: white;
     z-index: -5;
 }
