@@ -1,0 +1,367 @@
+@font-face {
+  font-family: "Omori Normal";
+  src: url(assets/OMORI_GAME.woff2) format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  background: url(assets/mountain.png), url(assets/star_a.png), url(assets/sky.png);
+  background-repeat: repeat-x, repeat, repeat-x;
+  background-size: cover, auto, cover;
+  image-rendering: pixelated;
+  background-attachment: fixed;
+  animation: slide 60s linear infinite;
+  background-blend-mode: normal, lighten;
+  background-position:
+      left bottom 20%,
+      left 0px top 0px,
+      left bottom;
+  margin: 0;
+  padding: 0;
+  font-family: "Omori Normal", monospace;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  color: white;
+  flex-direction: column;
+}
+
+@keyframes slide{
+  0% {
+    background-position:
+      left bottom 20%,
+      left 0px top 0px,
+      left bottom;
+  }
+  100% {
+    background-position:
+      left bottom 20%,
+      left calc(-1023px * 2) top 0px,
+      left bottom;
+  }
+}
+main {
+  flex-grow: 1;
+}
+#dialogue-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 20px;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+  position: relative;
+  bottom: -500px;
+  right: -600px;
+  margin-bottom: 7px;
+  transition: all 0.5s ease-out;
+}
+
+.name-box {
+  border: 2px solid white;
+  background-color: black;
+  padding: 5px 20px;
+  font-size: 28px;
+  box-shadow: 0px 0px 0 1px black;
+  height: auto;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  align-self: flex-end; 
+  object-fit: contain;
+}
+
+.character-portrait {
+  border: 2px solid white;
+  width: 140px;
+  height: auto;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 0 1px black;
+  overflow: hidden;
+  align-self: flex-end;
+}
+.character-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#dialog-box {
+  width: 150%;
+  height: 150px;
+  border: 3px solid white;
+  color: #FFFFFF;
+  padding: 8px;
+  font-family: "Omori Normal";
+  background: black;
+  box-shadow: 0px 0px 0 1px black;
+  font-size: 32px;
+  line-height: 32px;
+  margin-bottom: 7px;
+  padding-left: 14px;
+  padding-right: 14px;
+  bottom: -500px;
+  right: -600px;
+  width: 600px;
+  transform-origin: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.text-wave {
+  animation-name: wave-anim;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-composition: add;
+  animation-direction: reverse;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+@keyframes wave-anim {
+  0% {top: -4px}
+  50% {top: 4px}
+  100% {top: -4px}
+}
+
+.shake {
+  animation: shake;
+  transform-origin: center center;
+  animation-play-state: running;
+  animation-iteration-count: infinite;
+  animation-duration: 1000ms;
+  animation-timing-function: ease-in-out;
+  animation-composition: add;
+}
+ 
+@keyframes shake {
+  2% { transform:translate(0px,2px) rotate(0.5deg) }
+  4% { transform:translate(0px,2px) rotate(0.5deg) }
+  6% { transform:translate(2px,2px) rotate(0.5deg) }
+  8% { transform:translate(2px,2px) rotate(0.5deg) }
+  10% { transform:translate(2px,2px) rotate(0.5deg) }
+  12% { transform:translate(2px,2px) rotate(0.5deg) }
+  14% { transform:translate(0px,0px) rotate(0.5deg) }
+  16% { transform:translate(2px,0px) rotate(0.5deg) }
+  18% { transform:translate(0px,2px) rotate(0.5deg) }
+  20% { transform:translate(0px,2px) rotate(0.5deg) }
+  22% { transform:translate(2px,2px) rotate(0.5deg) }
+  24% { transform:translate(0px,2px) rotate(0.5deg) }
+  26% { transform:translate(0px,0px) rotate(0.5deg) }
+  28% { transform:translate(2px,0px) rotate(0.5deg) }
+  30% { transform:translate(2px,0px) rotate(0.5deg) }
+  32% { transform:translate(0px,2px) rotate(0.5deg) }
+  34% { transform:translate(0px,2px) rotate(0.5deg) }
+  36% { transform:translate(0px,0px) rotate(0.5deg) }
+  38% { transform:translate(2px,2px) rotate(0.5deg) }
+  40% { transform:translate(2px,0px) rotate(0.5deg) }
+  42% { transform:translate(0px,2px) rotate(0.5deg) }
+  44% { transform:translate(0px,2px) rotate(0.5deg) }
+  46% { transform:translate(0px,0px) rotate(0.5deg) }
+  48% { transform:translate(0px,2px) rotate(0.5deg) }
+  50% { transform:translate(0px,2px) rotate(0.5deg) }
+  52% { transform:translate(2px,2px) rotate(0.5deg) }
+  54% { transform:translate(0px,0px) rotate(0.5deg) }
+  56% { transform:translate(0px,0px) rotate(0.5deg) }
+  58% { transform:translate(0px,0px) rotate(0.5deg) }
+  60% { transform:translate(0px,2px) rotate(0.5deg) }
+  62% { transform:translate(0px,0px) rotate(0.5deg) }
+  64% { transform:translate(2px,0px) rotate(0.5deg) }
+  66% { transform:translate(0px,2px) rotate(0.5deg) }
+  68% { transform:translate(0px,0px) rotate(0.5deg) }
+  70% { transform:translate(2px,2px) rotate(0.5deg) }
+  72% { transform:translate(2px,0px) rotate(0.5deg) }
+  74% { transform:translate(0px,2px) rotate(0.5deg) }
+  76% { transform:translate(0px,2px) rotate(0.5deg) }
+  78% { transform:translate(2px,0px) rotate(0.5deg) }
+  80% { transform:translate(2px,0px) rotate(0.5deg) }
+  82% { transform:translate(0px,0px) rotate(0.5deg) }
+  84% { transform:translate(2px,0px) rotate(0.5deg) }
+  86% { transform:translate(0px,0px) rotate(0.5deg) }
+  88% { transform:translate(0px,0px) rotate(0.5deg) }
+  90% { transform:translate(2px,2px) rotate(0.5deg) }
+  92% { transform:translate(2px,2px) rotate(0.5deg) }
+  94% { transform:translate(2px,0px) rotate(0.5deg) }
+  96% { transform:translate(2px,0px) rotate(0.5deg) }
+  98% { transform:translate(0px,0px) rotate(0.5deg) }
+  0%, 100% { transform:translate(0,0) rotate(0) }
+}
+
+#box {
+  width: 100%;
+  height: 88px;
+  border: 3px solid white;
+  color: #FFFFFF;
+  padding: 8px;
+  font-family: "Omori Normal";
+  background: black;
+  box-shadow: 0px 0px 0 1px black;
+  font-size: 28px;
+  line-height: 28px;
+  margin-bottom: 7px;
+  padding-left: 14px;
+  padding-right: 14px;
+  bottom: 100px;
+  right: -1280px;
+  width: 180px;
+  height: 150px;
+  transform-origin: center;
+  position: relative;
+  box-sizing: border-box;
+  object-fit: contain;
+}
+
+#options {
+  margin-top: 20px;
+}
+
+.option {
+  padding: 5px;
+  margin: 5px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.option.selected {
+  color: #ffffff;
+}
+
+.hand-cursor {
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
+  visibility: hidden;
+}
+
+.selected .hand-cursor {
+  visibility: visible;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Wakeup Animation */
+.wakeup-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.eyelid-top, .eyelid-bottom {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background-color: black;
+  transition: transform 3s ease-in-out;
+}
+
+.eyelid-top {
+  top: 0;
+  transform-origin: top center;
+}
+
+.eyelid-bottom {
+  bottom: 0;
+  transform-origin: bottom center;
+}
+
+.wakeup-animation.active .eyelid-top {
+  transform: translateY(-100%);
+}
+
+.wakeup-animation.active .eyelid-bottom {
+  transform: translateY(100%);
+}
+
+html {
+  cursor: url('assets/cursor.png'), default;
+}
+
+body ::selection {
+  background: #ddaeff;
+}
+
+/* Loading screen */
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 2000;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 20px;
+  transition: opacity 1s ease-out;
+}
+
+#loading-icon {
+  width: auto;
+  height: 80px;
+  margin-right: 40px;
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  #options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .option {
+    padding: 10px 5px;
+    margin: 8px 0;
+    font-size: 20px;
+    justify-content: center;
+  }
+
+  @keyframes slide {
+    0% {
+      background-position:
+        left bottom 20%,
+        left 0px top 0px,
+        left bottom;
+    }
+    100% {
+      background-position:
+        left bottom 20%,
+        left calc(-1023px * 2) top 0px,
+        left bottom;
+    }
+  }
+
+  .hand-cursor {
+    width: 25px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .option {
+    font-size: 16px;
+  }
+}
+      

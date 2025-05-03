@@ -1,0 +1,87 @@
+@font-face {
+  font-family: "Omori Normal";
+  src: url(assets/OMORI_GAME.woff2) format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+:root {
+  --toast-omoriboss-width: 438px;
+  --toast-omoriboss-height: 66px;
+}
+
+.achievement-toast {
+  width: var(--toast-omoriboss-width);
+  height: var(--toast-omoriboss-height);
+  position: fixed;
+  left: 0;
+  top: 8px;
+  image-rendering: pixelated;
+  animation-name: toast-show;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+  box-sizing: border-box;
+  display: flex;
+  z-index: 1000000;
+  box-shadow: 0px 0px 0 1px black;
+}
+
+.toast-icon {
+  height: 100%;
+  background-size: cover;
+  box-sizing: border-box;
+  border: 3px solid white;
+  image-rendering: pixelated;
+  padding: 1px;
+  background: black;
+}
+
+.toast-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: black;
+  border: 3px solid white;
+  border-left: none;
+  flex-grow: 1;
+  padding: 0 10px;
+  gap: 4px;
+}
+
+.scary {
+  font-family: "Omori Normal" !important;
+}
+
+.toast-title {
+  color: white;
+  font-family: "Omori Normal";
+  font-size: 28px;
+  line-height: 20px;
+}
+
+.toast-description {
+  color: white;
+  font-family: "Omori Normal";
+  font-size: 22px;
+  line-height: 18px;
+}
+
+.scary .toast-title {
+  margin-top: 6px;
+}
+
+@keyframes toast-show {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes toast-hide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+.achievements .hidden {
+  animation-name: toast-hide;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- HTML Meta Tags -->
+<title>OurInnerWorld</title>
+<meta name="description" content="An OMORI-inspired website made with love as a birthday gift">
+
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="https://ourinnerworld.neocities.org/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OurInnerWorld">
+<meta property="og:description" content="An OMORI-inspired website made with love as a birthday gift">
+<meta property="og:image" content="https://ourinnerworld.neocities.org/for%20my%20cute%20bf/assets/meta.png">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="ourinnerworld.neocities.org">
+<meta property="twitter:url" content="https://ourinnerworld.neocities.org/">
+<meta name="twitter:title" content="OurInnerWorld">
+<meta name="twitter:description" content="An OMORI-inspired website made with love as a birthday gift">
+<meta name="twitter:image" content="https://ourinnerworld.neocities.org/for%20my%20cute%20bf/assets/meta.png">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link href="main.css" rel="stylesheet" type="text/css" media="all">
+    <link href="achievement.css" rel="stylesheet" type="text/css" media="all">
+    <link href="toast.css" rel="stylesheet" type="text/css" media="all">
+<!-- Meta Tags Generated via https://www.opengraph.xyz -->
+
+  </head>
+  <body>
+
+    <button id="show-achievements" class="toggle-button">Show Achievements</button>
+    <button id="show-readme" class="toggle-button-read-me">README.md</button>
+    <div id="achievement-window" style="display: none;">
+        <div class="window-header">
+            <span>ACHIEVEMENTS</span>
+            <span class="close-button" id="close-window">X</span>
+        </div>
+        
+        <div class="achievement-container">
+            <div class="achievement-list-title">ACHIEVEMENTS</div>
+            
+            <div class="achievement-progress-bar-outer">
+                <div id="achievement-list-bar" class="achievement-progress-bar-inner"></div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; width: 100%;">
+                <span id="achievement-list-count">0/0</span>
+                <span id="achievement-list-percentage">0%</span>
+            </div>
+    
+            
+            <div class="achievement-list-container">
+                <div id="achievement-list-general" class="achievement-list"></div>
+            </div>
+        </div>
+    </div>
+
+ <!-- README Window -->
+<div id="readme-window">
+  <div class="window-header">
+    <span>README.md</span>
+    <span class="close-button" id="close-readme">X</span>
+  </div>
+  
+  <div class="readme-content">
+    <h1>ABOUT THIS SITE</h1>
+    <p>Welcome to the OMORI-inspired site I made as birthday gift for my bf!</p>
+    <p>Soooo, how are you? This website was made specifically for my boyfriend, and I decided to upload it to Neocities. It's currently very empty, but I plan to upload constant updates to add battles and other things. Feel free to take code from this; I don't really mind and I like helping people. Most of it is made with Omori assets and Javascript. I'm sorry if something isn't perfect; I'm still working on this and I'm pretty busy with projects and work. Below, I'll leave some information about me and my sis (who helps me with this little project). Omori belongs to OMOCAT! All credit goes to the creator.</p>
+    
+    <div class="image-pair">
+      <div class="image-with-caption">
+        <img src="assets/Skye.gif" alt="Skye">
+        <span class="image-caption"><a href="https://x.com/LuvrksnSkye" target="_blank">Skye Journey</a></span>
+      </div>
+      
+      <div class="image-with-caption">
+        <img src="assets/sely.gif" alt="Sely">
+        <span class="image-caption"><a href="https://x.com/Sely_Sunny" target="_blank">Selysunny</a></span>
+      </div>
+    </div>
+    
+    <p>"OurInnerWorld" is planned to be a simple and sweet experience, replacing Omori's original characters with some of my friends and my boyfriend during his birthday. Happy exploring and have a cake!</p>
+    
+    <div class="cake-container">
+      <img src="assets/cake.gif" alt="Cake">
+    </div>
+  </div>
+</div>
+    <!-- Background music audio element -->
+    <audio id="background-music" loop autoplay playsinline>
+      <source src="assets/sound-effects/Do-You-Remember_.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <img id="loading-icon" src="assets/loading_bulb.png" alt="Loading...">
+    </div>
+    
+    <!-- Wakeup animation container -->
+    <div class="wakeup-animation">
+      <div class="eyelid-top"></div>
+      <div class="eyelid-bottom"></div>
+    </div>
+    <main>
+    <div id="dialog-container">
+      <div class="dialog-header">
+          <div class="name-box">
+    Skye
+          </div>
+          <div class="character-portrait">
+              <!-- Add the character image here -->
+              <img id="character-image" src="assets/Skye-neutral.png" alt="Character portrait">
+          </div>
+      </div>
+      <div id="dialog-box"></div>
+    
+    </main>
+    <div id="box">
+    <div id="options">
+      <div class="option selected" data-action="continue">
+          <img class="hand-cursor" src="assets/hand-right.png" alt="Hand cursor">
+          CONTINUE
+      </div>
+      <div class="option" data-action="back">
+          <img class="hand-cursor" src="assets/hand-right.png" alt="Hand cursor">
+          GO BACK
+      </div>
+    </div>
+    </div>
+    </div>
+    
+    <!-- User verification input overlay -->
+    <div id="verification-overlay" style="display: none; position: fixed; top: 20%; left: 50%; transform: translateX(-50%); z-index: 1000; background: black; border: 3px solid white; padding: 20px; box-shadow: 0px 0px 0 1px black; color: white; width: 80%; max-width: 400px; font-family: 'Omori Normal'; text-align: center;">
+      <p style="margin-bottom: 15px; font-size: 24px;">Who are you?</p>
+      <input type="text" id="verification-input" style="width: 80%; padding: 10px; font-family: 'Omori Normal'; background: black; color: white; border: 2px solid white; margin-bottom: 15px; font-size: 20px;">
+      <button id="verification-button" style="padding: 10px 20px; font-family: 'Omori Normal'; background: black; color: white; border: 2px solid white; cursor: pointer; font-size: 20px;">Submit</button>
+    </div>
+   
+    <audio id="text0" src="audio/text0.ogg" preload="auto"></audio>
+    <audio id="text1" src="audio/text1.ogg" preload="auto"></audio>
+    <audio id="text2" src="audio/text2.ogg" preload="auto"></audio>
+    <audio id="text3" src="audio/text3.ogg" preload="auto"></audio>
+    <audio id="text4" src="audio/text4.ogg" preload="auto"></audio>
+    <audio id="menu_move" src="sound-effects/continue.ogg" preload="auto"></audio>
+    <audio id="menu_select" src="sound-effects/go-back.ogg" preload="auto"></audio>
+
+    <audio id="button-click" src="assets/sound-effects/continue.ogg" preload="auto"></audio>
+    <script src="intro.js"></script>
+    <script src="achievement-list.js"></script>
+    <script src="achievements.js">
+    </script>
+    <script src="index_achievement.js"></script>
+  <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Sound effect
+    const buttonClickSound = document.getElementById('button-click');
+    
+    // Button elements
+    const achievementToggle = document.getElementById('show-achievements');
+    const readmeToggle = document.getElementById('show-readme');
+    
+    // Window elements
+    const readmeWindow = document.getElementById('readme-window');
+    
+    // Close buttons
+    const closeReadme = document.getElementById('close-readme');
+    
+    // Achievement window toggle with sound
+    achievementToggle.addEventListener('click', function() {
+        buttonClickSound.currentTime = 0;
+        buttonClickSound.play();
+
+    });
+    
+    // README window toggle with sound
+    readmeToggle.addEventListener('click', function() {
+        buttonClickSound.currentTime = 0;
+        buttonClickSound.play();
+        
+        // Show the readme window
+        readmeWindow.style.display = 'flex';
+    });
+    
+    // Close README window
+    if (closeReadme) {
+        closeReadme.addEventListener('click', function() {
+            buttonClickSound.currentTime = 0;
+            buttonClickSound.play();
+            readmeWindow.style.display = 'none';
+        });
+    }
+});
+  </script>
+  </body>
+  
+  
+ </html>

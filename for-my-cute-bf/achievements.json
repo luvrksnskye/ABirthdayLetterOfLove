@@ -1,0 +1,35 @@
+{
+    "general": {
+        "title": "General Skye",
+        "template": "toast.xml",
+        "style": "toast.css",
+        "sfx": "../js/sfx/Quest-Complete.mp3",
+        "missing": {
+            "description": "???",
+            "class": "missing"
+        },
+        "hidden": {
+            "icon": "assets/achievements/hidden.png",
+            "title": "???",
+            "description": "???",
+            "class": "hidden"
+        },
+        "achievements": {
+            "new-visitor": {
+                "icon": "for my cute bf/assets/favicon.png",
+                "title": "New Visitor",
+                "description": "Meet Skye and continue to the home page"
+            },
+            "dialog-master": {
+                "icon": "for my cute bf/assets/star.gif",
+                "title": "Who?",
+                "description": "Skye seems confused. Still, who are you?"
+            },
+            "birthday": {
+                "icon": "for my cute bf/assets/cake.gif",
+                "title": "Birthday Party",
+                "description": "YAYYY!! It's your birthday"
+            }
+        }
+    }
+}

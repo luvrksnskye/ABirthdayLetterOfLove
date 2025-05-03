@@ -1,0 +1,490 @@
+@import url("for-my-cute-bf/achievement.css");
+
+@font-face {
+    font-family: "Omori Normal";
+    src: url(for-my-cute-bf/assets/OMORI_GAME.woff2) format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+:root {
+    --achievement-bg-color: black;
+    --achievement-border-color: white;
+    --achievement-text-color: white;
+    --achievement-progress-color-start: rgba(237, 208, 238, 1);
+    --achievement-progress-color-end: rgba(148, 241, 225, 1);
+  }
+
+body {
+    background-color: #000;
+    image-rendering: pixelated;
+    font-family: "Omori Normal", monospace;
+    overflow: hidden;
+    color: white;
+    z-index: -5;
+}
+
+/* Landing Animation CSS */
+.landing-animation { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: #000000; 
+    z-index: 2000; 
+    transition: transform 1.5s ease-in-out; 
+}
+
+.animation-complete { 
+    transform: translateY(-40vh); 
+}
+
+.lightbulb-container { 
+    position: relative; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-bottom: -380px; 
+    transform: translateY(-350px); 
+}
+
+.lightbulb { 
+    position: relative; 
+    z-index: 100; 
+    width: 100px; 
+    opacity: 0; 
+    animation: fadeIn 1s ease-in 0.5s forwards; 
+}
+
+.logo-1 { 
+    position: absolute; 
+    z-index: 1; 
+    width: 200px; 
+    bottom: 30px; 
+    opacity: 0; 
+    animation: fadeIn 1s ease-in 1.5s forwards; 
+}
+
+.logo-2-container { 
+    display: flex; 
+    justify-content: center; 
+    margin-top: 40px; 
+}
+
+.logo-2 { 
+    width: 180px; 
+    opacity: 0; 
+    animation: fadeIn 1s ease-in 2.5s forwards; 
+}
+
+.start-button-container {
+    margin-top: 50px;
+    opacity: 0;
+    animation: fadeIn 1s ease-in 3.5s forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.start-button {
+    background-color: #000;
+    color: #fff;
+    border: 3px solid #fff;
+    box-shadow: 0px 0px 0 1px #000;
+    padding: 10px 20px;
+    font-family: "Omori Normal", monospace;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.start-button:hover {
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn { 
+    from { opacity: 0; } 
+    to { opacity: 1; }
+}
+
+/* Video Screen CSS */
+.video-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 1900;
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.video-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.skip-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 5px 15px;
+    font-family: "Omori Normal", monospace;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 2100;
+}
+
+/* Black Overlay for Transitions */
+.black-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 2200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .lightbulb { width: 80px; }
+    .logo-1 { width: 160px; }
+    .logo-2 { width: 150px; }
+    .start-button { font-size: 20px; }
+}
+
+@media (max-width: 480px) {
+    .lightbulb { width: 60px; }
+    .logo-1 { width: 120px; }
+    .logo-2 { width: 120px; }
+    .start-button { font-size: 18px; }
+}
+
+/* Loading screen */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 2000;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 20px;
+    transition: opacity 1s ease-out;
+}
+
+#loading-icon {
+    width: auto;
+    height: 80px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+}
+
+@media screen and (max-width: 768px) {
+    #options {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .option {
+        padding: 10px 5px;
+        margin: 8px 0;
+        font-size: 20px;
+        justify-content: center;
+    }
+
+    @keyframes slide {
+        0% {
+            background-position:
+            left bottom 20%,
+            left 0px top 0px,
+            left bottom;
+        }
+        100% {
+            background-position:
+            left bottom 20%,
+            left calc(-1023px * 2) top 0px,
+            left bottom;
+        }
+    }
+
+    .hand-cursor {
+        width: 25px;
+    }
+}
+
+html {
+    cursor: url('for-my-cute-bf/assets/cursor.png'), default;
+}
+
+body ::selection {
+    background: #b9b9b9;
+}
+
+.hand-cursor {
+    width: 20px;
+    height: auto;
+    margin-right: 10px;
+    visibility: hidden;
+}
+
+.selected .hand-cursor {
+    visibility: visible;
+}
+
+.hidden {
+    display: none;
+}
+
+/* New CSS for added features */
+.animated-hand-cursor {
+    position: relative;
+    width: 30px;
+    height: auto;
+    margin-right: 10px;
+    animation: handAnimation 2s ease-in-out infinite;
+}
+
+@keyframes handAnimation {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.music-toggle {
+    background-color: #000;
+    color: #fff;
+    border: 3px solid #fff;
+    box-shadow: 0px 0px 0 1px #000;
+    padding: 8px 16px;
+    font-family: "Omori Normal", monospace;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.music-toggle:hover {
+    transform: scale(1.05);
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.toggle-button-read-me {
+    background-color: var(--achievement-bg-color);
+    border: 3px solid var(--achievement-border-color);
+    color: var(--achievement-text-color);
+    padding: 8px 16px;
+    margin: 10px;
+    font-family: "Omori Normal", var(--skye-alt-text);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    font-size: 22px;
+    box-shadow: 0px 0px 0 1px black;
+  }
+  
+  .toggle-button-read-me:hover {
+    background-color: #333;
+    transform: scale(1.05);
+  }
+
+
+/* README Window */
+#readme-window {
+    background-color: var(--achievement-bg-color);
+    border: 3px solid var(--achievement-border-color);
+    box-shadow: 0px 0px 0 1px black, 0 0 20px rgba(255, 255, 255, 0.3);
+    min-width: 600px;
+    max-width: 800px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100001;
+    overflow: hidden;
+    text-align: left;
+    font-size: 20px;
+    display: none;
+  }
+  
+  .readme-content {
+    padding: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+    color: var(--achievement-text-color);
+    font-family: "Omori Normal", var(--skye-alt-text);
+    font-size: 22px;
+    line-height: 1.4;
+    text-align: center;
+  }
+  
+  /* Polaroid styling for the images */
+  .image-with-caption {
+    position: relative;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 15px 15px 40px 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: rotate(-2deg);
+    transition: all 0.3s ease;
+    max-width: 220px;
+  }
+  
+  .image-with-caption:nth-child(2) {
+    transform: rotate(3deg);
+  }
+  
+  .image-with-caption:hover {
+    transform: scale(1.05) rotate(0deg);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+  }
+  
+  .image-with-caption img {
+    width: 100%;
+    display: block;
+    border: none;
+    margin-bottom: 10px;
+    background-image: url("for-my-cute-bf/assets/polaroid.png");
+    background-size: cover;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .image-caption {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: "Omori Normal", var(--skye-alt-text);
+    font-size: 18px !important;
+    color: black !important;
+    margin-top: 5px !important;
+  }
+  
+  .image-caption a {
+    color: black !important;
+    text-decoration: none;
+    font-weight: normal;
+  }
+  
+  .image-caption a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Adjust the image pair display */
+  .image-pair {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 30px 0;
+  }
+  
+  /* Custom scrollbar styles */
+  .readme-content::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  .readme-content::-webkit-scrollbar-track {
+    background: black;
+  }
+  
+  .readme-content::-webkit-scrollbar-thumb {
+    background: white;
+    border: 2px solid black;
+  }
+  
+  .readme-content::-webkit-scrollbar-button {
+    background-color: black;
+    height: 15px;
+    width: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid white;
+  }
+  
+  .readme-content::-webkit-scrollbar-button:vertical:start:decrement {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 6 L5 0 L10 6 Z' fill='white'/%3E%3C/svg%3E");
+  }
+  
+  .readme-content::-webkit-scrollbar-button:vertical:end:increment {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0 L5 6 L10 0 Z' fill='white'/%3E%3C/svg%3E");
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    #readme-window {
+      max-width: 95% !important;
+      min-width: 95% !important;
+      width: 95% !important;
+      height: 90vh !important;
+    }
+    
+    .readme-content .image-pair {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+  }
+
+  #piano-sprite {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    max-width: 700px;
+    image-rendering: pixelated;
+    pointer-events: none; /* Makes it unclickable */
+    z-index: 2001; /* Make sure it appears above other elements */
+    opacity: 0; /* Start hidden */
+    animation: fadeIn 1s ease-in 3s forwards; /* Fade in after logos */
+}
+
+@media (max-width: 768px) {
+    #piano-sprite {
+        max-width: 500px;
+        bottom: 10px;
+        left: 10px;
+    }
+}

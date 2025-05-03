@@ -1,0 +1,562 @@
+@font-face {
+    font-family: "Omori Normal";
+    src: url(assets/OMORI_GAME.woff2) format("woff");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Omori Normal", monospace;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .landing-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    z-index: 1000;
+    transition: transform 1.5s ease-in-out;
+  }
+
+  .animation-complete {
+    transform: translateY(-40vh); 
+  }
+
+  .lightbulb-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -380px; 
+    transform: translateY(-350px); 
+  }
+
+  .lightbulb {
+    position: relative;
+    z-index: 2;
+    width: 100px; 
+    opacity: 0;
+    animation: fadeIn 1s ease-in 0.5s forwards;
+  }
+
+  .logo-1 {
+    position: absolute;
+    z-index: 1;
+    width: 200px; 
+    bottom: 30px; 
+    opacity: 0;
+    animation: fadeIn 1s ease-in 1.5s forwards;
+  }
+
+  .logo-2-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px; 
+  }
+
+  .logo-2 {
+    width: 180px; 
+    opacity: 0;
+    animation: fadeIn 1s ease-in 2.5s forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .main-content {
+    position: relative;
+    z-index: 1;
+    padding-top: 80px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    z-index: 9999;
+  }
+
+  .door-container {
+    position: relative;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+  }
+
+  .door {
+    width: 800px;
+    max-width: 900%;
+    height: auto;
+
+  }
+
+  #dialogue-box {
+    position: absolute;
+    bottom: 60px;
+    right: 80px;
+    width: 200px;
+    height: auto;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    padding: 15px;
+    z-index: 100;
+    font-size: 24px;
+    opacity: 0;
+    animation: fadeIn 1s ease-in;
+  }
+
+  #options {
+    margin-top: 20px;
+  }
+
+  .option {
+    padding: 5px;
+    margin: 5px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  .option.selected {
+    color: #ffffff;
+  }
+
+  .hand-cursor {
+    width: 20px;
+    height: auto;
+    margin-right: 10px;
+    visibility: hidden;
+  }
+
+  .selected .hand-cursor {
+    visibility: visible;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  html {
+    cursor: url('assets/cursor.png'), default;
+  }
+
+  #dialogue-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 9999999;
+  }
+
+  #dialogue-image {
+    width: auto;
+    height: 250px;
+    margin-bottom: 20px;
+  }
+
+  .black-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1000000000000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 2s ease;
+  }
+
+  .white-space {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    height: 30vh;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 4px solid black;
+    display: none;
+    z-index: 9999;
+  }
+
+  .white-space-item {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .white-space-item:hover {
+    transform: scale(1.1);
+  }
+
+  .sketchbook {
+    width: 50px;
+    bottom: 20%;
+    left: 20%;
+  }
+
+  .mewo {
+    width: 80px;
+    bottom: 15%;
+    right: 30%;
+  }
+
+  .laptop {
+    width: 50px;
+    top: 30%;
+    left: 30%;
+  }
+
+  .tissuebox {
+    width: 50px;
+    top: 40%;
+    right: 25%;
+  }
+
+  .white-space-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    display: none;
+    image-rendering: pixelated;
+  }
+
+  .outside {
+    position: absolute;
+    bottom: 300px;
+    right: 500px;
+    width: 50px;
+    cursor: pointer;
+    display: none;
+    transition: transform 0.3s ease;
+    image-rendering: pixelated;
+  }
+  #leave-dialogue-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(0, 0, 0);
+    border: 2px solid white;
+    padding: 20px;
+    color: white;
+    z-index: 99999999;
+    display: none;
+    width: 200px;
+    font-size: 30px;
+  }
+  #love-letter {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    border: 3px solid white;
+    color: white;
+    padding: 30px;
+    max-width: 80%;
+    max-height: 100%;
+    overflow-y: auto;
+    z-index: 9999999999;
+    border-radius: 10px;
+    display: none;
+    font-family: "Omori Normal", monospace;
+    line-height: 1.6;
+    text-align: center;
+  }
+  #love-letter p {
+    margin-bottom: 15px;
+    font-size: 30px;
+  }
+  #love-letter .signature {
+    margin-top: 20px;
+  }
+  #close-letter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  #birthday-memo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    border: 3px solid white;
+    padding: 30px;
+    max-width: 80%;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 9999999999;
+    display: none;
+    text-align: center;
+  }
+
+  .memo-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+  }
+
+  #close-memo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  body ::selection {
+    background: #858585;
+  }
+  
+  @media screen and (max-width: 768px) {
+
+    .lightbulb {
+      width: 70px;
+    }
+  
+    .logo-1 {
+      width: 140px;
+      bottom: 20px;
+    }
+  
+    .logo-2 {
+      width: 120px;
+    }
+  
+    .door {
+      width: 90%;
+      max-width: 500px;
+    }
+  
+    #dialogue-box {
+      bottom: 40px;
+      right: 30px;
+      width: 50px;
+      font-size: 20px;
+    }
+  
+    #dialogue-container {
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 10px;
+    }
+  
+    #dialogue-image {
+      height: 80px;
+      margin-bottom: 30px;
+    }
+  
+    .white-space {
+      width: 95%;
+      max-width: 400px;
+      height: 40vh;
+    }
+  
+    #love-letter, #birthday-memo {
+      max-width: 90%;
+      padding: 20px;
+    }
+  
+    #love-letter p {
+      font-size: 18px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+  
+    .animation-complete {
+      transform: translateY(-35vh);
+    }
+  
+    .lightbulb-container {
+      margin-bottom: -200px;
+      transform: translateY(-180px);
+    }
+  
+    .lightbulb {
+      width: 50px;
+    }
+  
+    .logo-1 {
+      width: 100px;
+      bottom: 15px;
+    }
+  
+    .logo-2 {
+      width: 90px;
+    }
+  
+    .main-content {
+      padding-top: 50px;
+    }
+  
+    .door {
+      width: 300%;
+      max-width: 460px;
+    }
+  
+    #dialogue-box {
+      position: relative;
+      bottom: auto;
+      right: auto;
+      width: 40%;
+      max-width: 250px;
+      margin: 0 auto;
+      font-size: 20px;
+    }
+  
+    .option {
+      padding: 10px 5px;
+      margin: 8px 0;
+      font-size: 20px;
+      justify-content: center;
+    }
+  
+    .hand-cursor {
+      width: 16px;
+    }
+  
+    #dialogue-container {
+      padding-bottom: 5px;
+    }
+  
+    #dialogue-image {
+      height: 140px;
+      margin-bottom: 200px;
+    }
+  
+    .white-space {
+      height: 30vh;
+    }
+  
+    .sketchbook {
+      width: 40px;
+      bottom: 20%;
+      left: 15%;
+    }
+  
+    .mewo {
+      width: 60px;
+      bottom: 15%;
+      right: 15%;
+    }
+  
+    .laptop {
+      width: 40px;
+      top: 30%;
+      left: 20%;
+    }
+  
+    .tissuebox {
+      width: 40px;
+      top: 40%;
+      right: 20%;
+    }
+  
+    .outside {
+      bottom: 150px;
+      right: 150px;
+      width: 40px;
+    }
+  
+    #leave-dialogue-box {
+      width: 180px;
+      font-size: 18px;
+      padding: 15px;
+    }
+  
+    #love-letter p {
+      font-size: 20px;
+    }
+    #love-letter{
+      width: 500px;
+      height: 730px;
+    }
+    #birthday-memo {
+      width: 800px;
+    }
+    #close-letter, #close-memo {
+      font-size: 16px;
+    }
+  }
+  
+  @media screen and (max-height: 500px) and (orientation: landscape) {
+    .animation-complete {
+      transform: translateY(-20vh);
+    }
+  
+    .lightbulb-container {
+      margin-bottom: -150px;
+      transform: translateY(-120px);
+    }
+  
+    .main-content {
+      padding-top: 30px;
+      min-height: 80vh;
+    }
+  
+    #dialogue-container {
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+  
+    #dialogue-image {
+      height: 120px;
+      margin-bottom: 0;
+      margin-right: 10px;
+    }
+  
+    #dialogue-box {
+      position: relative;
+      width: 50%;
+      max-width: 200px;
+      margin: 0;
+      font-size: 14px;
+    }
+  
+    .white-space {
+      height: 70%;
+    }
+  
+    #love-letter, #birthday-memo {
+      max-height: 70vh;
+    }
+  }

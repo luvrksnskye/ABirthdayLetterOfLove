@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- HTML Meta Tags -->
+<title>OurInnerWorld</title>
+<meta name="description" content="An OMORI-inspired website made with love as a birthday gift">
+
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="https://ourinnerworld.neocities.org/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OurInnerWorld">
+<meta property="og:description" content="An OMORI-inspired website made with love as a birthday gift">
+<meta property="og:image" content="https://ourinnerworld.neocities.org/for%20my%20cute%20bf/assets/meta.png">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="ourinnerworld.neocities.org">
+<meta property="twitter:url" content="https://ourinnerworld.neocities.org/">
+<meta name="twitter:title" content="OurInnerWorld">
+<meta name="twitter:description" content="An OMORI-inspired website made with love as a birthday gift">
+<meta name="twitter:image" content="https://ourinnerworld.neocities.org/for%20my%20cute%20bf/assets/meta.png">
+<link rel="icon" type="image/png" href="for-my-cute-bf/assets/favicon.png">
+    <link href="style.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+  <!-- Audio elements -->
+  <audio id="background-music" src="for-my-cute-bf/assets/sound-effects/Final Duet.mp3" loop preload="auto"></audio>
+  <audio id="button-click" src="for-my-cute-bf/assets/sound-effects/continue.ogg" preload="auto"></audio>
+
+  <div class="landing-animation" id="landing-animation"> 
+    <div class="lightbulb-container"> 
+      <img src="for-my-cute-bf/assets/bg/lightbulb_white.gif" alt="Lightbulb" class="lightbulb"> 
+      <img src="for-my-cute-bf/assets/bg/logo_1.png" alt="Logo 1" class="logo-1"> 
+    </div> 
+    <div class="logo-2-container"> 
+      <img src="for-my-cute-bf/assets/bg/logo_2.png" alt="Logo 2" class="logo-2"> 
+    </div>
+    <div class="start-button-container">
+      <button id="show-readme" class="toggle-button-read-me">README.md</button>
+      <div class="option selected" data-action="start">
+        <img class="animated-hand-cursor" src="for-my-cute-bf/assets/hand-right.png" alt="Hand cursor">
+        <button class="start-button" id="start-button">START</button>
+      </div>
+      <div class="toggle-container">
+        <img class="hand-cursor" src="for-my-cute-bf/assets/hand-right.png" alt="Hand cursor">
+        <button class="music-toggle" id="music-toggle">MUSIC: OFF</button>
+      </div>
+    </div>
+    
+    <!-- Piano sprite in bottom left corner of landing screen -->
+    <img id="piano-sprite" src="intro-sprites/Skye-playing-piano.gif" alt="Skye playing piano">
+  </div>
+
+  <div class="video-screen" id="video-screen">
+    <div class="video-container">
+      <video id="intro-video" class="intro-video">
+        <source src="https://dl.dropbox.com/scl/fi/ymww1c0h419raszzwu1md/intro-video.mp4?rlkey=tsj90clndnezculardzg4nso4&st=o44n0hff&dl=0" type="video/mp4">
+      </video>
+      <button id="skip-button" class="skip-button">SKIP [SPACE]</button>
+    </div>
+  </div>
+
+   <!-- README Window -->
+<div id="readme-window">
+  <div class="window-header">
+    <span>README.md</span>
+    <span class="close-button" id="close-readme">X</span>
+  </div>
+  
+  <div class="readme-content">
+    <h1>ABOUT THIS SITE</h1>
+    <p>Welcome to the OMORI-inspired site I made as birthday gift for my bf!</p>
+    <p>Soooo, how are you? This website was made specifically for my boyfriend, and I decided to upload it to Neocities. It's currently very empty, but I plan to upload constant updates to add battles and other things. Feel free to take code from this; I don't really mind and I like helping people. Most of it is made with Omori assets and Javascript. I'm sorry if something isn't perfect; I'm still working on this and I'm pretty busy with projects and work. Below, I'll leave some information about me and my sis (who helps me with this little project). Omori belongs to OMOCAT! All credit goes to the creator.</p>
+    
+    <div class="image-pair">
+      <div class="image-with-caption">
+        <img src="for-my-cute-bf/assets/Skye.gif" alt="Skye">
+        <span class="image-caption"><a href="https://x.com/LuvrksnSkye" target="_blank">Skye Journey</a></span>
+      </div>
+      
+      <div class="image-with-caption">
+        <img src="for-my-cute-bf/assets/sely.gif" alt="Sely">
+        <span class="image-caption"><a href="https://x.com/Sely_Sunny" target="_blank">Selysunny</a></span>
+      </div>
+    </div>
+    
+    <p>"OurInnerWorld" is planned to be a simple and sweet experience, replacing Omori's original characters with some of my friends and my boyfriend during his birthday. Happy exploring and have a cake!</p>
+    
+    <div class="cake-container">
+      <img src="for-my-cute-bf/assets/cake.gif" alt="Cake">
+    </div>
+  </div>
+</div>
+  
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <img id="loading-icon" src="for-my-cute-bf/assets/loading_bulb.png" alt="Loading...">
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          // Sound effect
+          const buttonClickSound = document.getElementById('button-click');
+          
+          // Button elements
+          const readmeToggle = document.getElementById('show-readme');
+          
+          // Window elements
+          const readmeWindow = document.getElementById('readme-window');
+          
+          // Close buttons
+          const closeReadme = document.getElementById('close-readme');
+      
+          // README window toggle with sound
+          readmeToggle.addEventListener('click', function() {
+              buttonClickSound.currentTime = 0;
+              buttonClickSound.play();
+              
+              // Show the readme window
+              readmeWindow.style.display = 'flex';
+          });
+          
+          // Close README window
+          if (closeReadme) {
+              closeReadme.addEventListener('click', function() {
+                  buttonClickSound.currentTime = 0;
+                  buttonClickSound.volume = 0.8; 
+                  buttonClickSound.play();
+                  readmeWindow.style.display = 'none';
+              });
+          }
+      });
+    </script>
+  <script src="start-and-landing.js"></script>
+</body>
+</html>

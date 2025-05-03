@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For my beloved</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <link href="home.css" rel="stylesheet" type="text/css" media="all">
+  </head>
+  <body>
+    <div class="landing-animation">
+      <div class="lightbulb-container">
+        <img src="assets/lightbulb.gif" alt="Lightbulb" class="lightbulb">
+        <img src="assets/logo_1.png" alt="Logo 1" class="logo-1">
+      </div>
+      <div class="logo-2-container">
+        <img src="assets/logo_2.png" alt="Logo 2" class="logo-2">
+      </div>
+    </div>
+    
+    <div class="main-content">
+      <div class="door-container">
+        <img src="assets/door.png" alt="Door" class="door">
+        <div id="dialogue-box" class="hidden">
+          <div id="options">
+            <div class="option selected" data-action="continue">
+              <img class="hand-cursor" src="assets/hand-right.png" alt="Hand cursor">
+              OPEN THE DOOR
+            </div>
+            <div class="option" data-action="back">
+              <img class="hand-cursor" src="assets/hand-right.png" alt="Hand cursor">
+              DO NOTHING?
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="dialogue-container">
+      <img id="dialogue-image" src="assets/Door-dialogue.gif" alt="Door Dialogue">
+    </div>
+    
+    <!-- Black overlay for transition -->
+    <div class="black-overlay"></div>
+    
+    <!-- White space content -->
+    <div class="white-space-container">
+      <div class="white-space">
+        <img src="assets/sketchbook.png" alt="Sketchbook" class="white-space-item sketchbook">
+        <img src="assets/mewo.gif" alt="Mewo" class="white-space-item mewo">
+        <img src="assets/laptop.gif" alt="Laptop" class="white-space-item laptop">
+        <img src="assets/tissuebox.png" alt="Tissue Box" class="white-space-item tissuebox">
+      </div>
+      <img src="assets/outside.png" alt="Outside" class="outside">
+    </div>
+
+    <!-- Leave dialogue box -->
+    <div id="leave-dialogue-box">
+      <div id="options">
+        <div class="option selected" data-action="leave">
+          <img class="hand-cursor" src="assets/hand-right.png" alt="Hand cursor">
+          LEAVE?
+        </div>
+        <div class="option" data-action="stay">
+          <img class="hand-cursor" src="assets/hand-right.png" alt="Hand cursor">
+          STAY
+        </div>
+      </div>
+    </div>
+
+    <!-- Love letter -->
+    <div id="love-letter">
+      <button id="close-letter">✕</button>
+      <h2>To My Beloved</h2>
+      <p>In the quiet moments when I see you, I find a universe of comfort and understanding. Your presence in my life has painted colors where there was once only gray.</p>
+      <p>Every laugh we share becomes a melody I carry with me. Every tear we've wiped away has strengthened the bond between us.</p>
+      <p>With you, I've learned to see beauty in the smallest things - the way morning light filters through curtains, the sound of rain against windows, the silence we can share without words.</p>
+      <p>I cherish not just who you are, but who I become when I'm with you - braver, kinder, more complete.</p>
+      <p>This journey with you is the greatest adventure of my life, and I look forward to every step we take together. Happy Birthday!</p>
+      <p class="signature">Forever yours, Skye</p>
+    </div>
+
+    <!-- Birthday Memo Container -->
+    <div id="birthday-memo">
+      <button id="close-memo">✕</button>
+      <img src="assets/birthday-memo.png" alt="Birthday Memo" class="memo-image">
+    </div>
+
+    <!-- Background music element -->
+    <audio id="background-music" loop autoplay playsinline>
+      <source src="assets/sound-effects/music-box.mp3" type="audio/mp3">
+    </audio>
+    
+    <!-- Door open sound effect -->
+    <audio id="door-open-sound">
+      <source src="assets/sound-effects/door-open.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- Letter open sound effect -->
+    <audio id="letter-open-sound">
+      <source src="assets/sound-effects/open-letter.mp3" type="audio/mp3">
+    </audio>
+        <!-- Letter close sound effect -->
+        <audio id="letter-close-sound">
+          <source src="assets/sound-effects/page-flip.mp3" type="audio/mp3">
+        </audio>
+        
+    
+    <script src="main.js"></script>
+  </body>
+</html>
