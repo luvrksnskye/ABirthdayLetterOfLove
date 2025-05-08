@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- HTML Meta Tags -->
@@ -8,11 +8,11 @@
 <meta name="description" content="An OMORI-inspired website made with love as a birthday gift">
 
 <!-- Facebook Meta Tags -->
-<meta property="og:url" content="https://ourinnerworld.neocities.org/">
+<meta property="og:url" content="https://luvrksnskye.github.io/ABirthdayLetterOfLove/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="OurInnerWorld">
 <meta property="og:description" content="An OMORI-inspired website made with love as a birthday gift">
-<meta property="og:image" content="https://ourinnerworld.neocities.org/for%20my%20cute%20bf/assets/meta.png">
+<meta property="og:image" content="https://luvrksnskye.github.io/ABirthdayLetterOfLove/forr-my-cute-bf/assets/meta.png">
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
@@ -20,7 +20,7 @@
 <meta property="twitter:url" content="https://ourinnerworld.neocities.org/">
 <meta name="twitter:title" content="OurInnerWorld">
 <meta name="twitter:description" content="An OMORI-inspired website made with love as a birthday gift">
-<meta name="twitter:image" content="https://ourinnerworld.neocities.org/for%20my%20cute%20bf/assets/meta.png">
+<meta name="twitter:image" content="https://luvrksnskye.github.io/ABirthdayLetterOfLove/forr-my-cute-bf/assets/meta.png">
 <link rel="icon" type="image/png" href="for-my-cute-bf/assets/favicon.png">
     <link href="style.css" rel="stylesheet" type="text/css" media="all">
 </head>
@@ -39,6 +39,7 @@
     </div>
     <div class="start-button-container">
       <button id="show-readme" class="toggle-button-read-me">README.md</button>
+      <button id="show-notes" class="toggle-button-notes">UPDATES</button>
       <div class="option selected" data-action="start">
         <img class="animated-hand-cursor" src="for-my-cute-bf/assets/hand-right.png" alt="Hand cursor">
         <button class="start-button" id="start-button">START</button>
@@ -56,7 +57,7 @@
   <div class="video-screen" id="video-screen">
     <div class="video-container">
       <video id="intro-video" class="intro-video">
-        <source src="https://dl.dropbox.com/scl/fi/ymww1c0h419raszzwu1md/intro-video.mp4?rlkey=tsj90clndnezculardzg4nso4&st=o44n0hff&dl=0" type="video/mp4">
+        <source src="https://dl.dropbox.com/scl/fi/1mwxv1ctvo7zunu9nmyiw/INTRO.mp4?rlkey=ygjefhvgazbadoe8bnf8nmenh&st=o4cmpxw8&dl=0" type="video/mp4">
       </video>
       <button id="skip-button" class="skip-button">SKIP [SPACE]</button>
     </div>
@@ -93,46 +94,151 @@
     </div>
   </div>
 </div>
+
+<!-- NOTES Window -->
+<div id="readme-window">
+  <div class="window-header">
+    <span>INFO AND UPDATES</span>
+    <span class="close-button" id="close-readme">X</span>
+  </div>
+  
+  <div class="notes-content">
+    <h1>VERSION 0.1</h1>
+    <p>OurInnerWorld is in its early stages, and many things will be changed! I'll leave some important notes that you might want to read before starting, considering the future additions I'll be making:</p>
+    <p>The characters and story are different from the original game, but there may be some scary moments, so the site will still be rated for adults only due to some explicit mental health content like heavy topics such as suicide, death, injury, mental illness, and more. Since we're on update 0.1, there's nothing to explore yet, and many things are still in development. So please be patient! This is just a gift and made for fun. I just want to make that clear!</p>    <h1>CHARACTERS</h1>
+    <div class="image-pair">
+      <div class="image-with-caption">
+        <img src="intro-sprites/Skye.webp" alt="Skye">
+        <span class="image-caption">Skye</span>
+      </div>
+      
+      <div class="image-with-caption">
+        <img src="intro-sprites/Rainy.webp" alt="Rainy">
+        <span class="image-caption">Rainy</span>
+      </div>
+      <div class="image-with-caption">
+        <img src="intro-sprites/Sun.PNG" alt="Sun">
+        <span class="image-caption">Sun</span>
+      </div>
+    </div>
+    
+  </div>
+  <div class="image-pair">
+    <div class="image-with-caption">
+      <img src="intro-sprites/Cloud.PNG" alt="Cloud">
+      <span class="image-caption">Cloud</span>
+    </div>
+    
+    <div class="image-with-caption">
+      <img src="intro-sprites/Jelly.PNG" alt="Jelly">
+      <span class="image-caption">Jelly</span>
+    </div>
+  </div>
+  
+</div>
+</div>
   
     <!-- Loading Screen -->
     <div id="loading-screen">
       <img id="loading-icon" src="for-my-cute-bf/assets/loading_bulb.png" alt="Loading...">
     </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          // Sound effect
-          const buttonClickSound = document.getElementById('button-click');
-          
-          // Button elements
-          const readmeToggle = document.getElementById('show-readme');
-          
-          // Window elements
-          const readmeWindow = document.getElementById('readme-window');
-          
-          // Close buttons
-          const closeReadme = document.getElementById('close-readme');
-      
-          // README window toggle with sound
-          readmeToggle.addEventListener('click', function() {
-              buttonClickSound.currentTime = 0;
-              buttonClickSound.play();
-              
-              // Show the readme window
-              readmeWindow.style.display = 'flex';
-          });
-          
-          // Close README window
-          if (closeReadme) {
-              closeReadme.addEventListener('click', function() {
-                  buttonClickSound.currentTime = 0;
-                  buttonClickSound.volume = 0.8; 
-                  buttonClickSound.play();
-                  readmeWindow.style.display = 'none';
-              });
-          }
-      });
-    </script>
+   <script>
+document.addEventListener('DOMContentLoaded', function() {
+
+const buttonClickSound = document.getElementById('button-click');
+
+const readmeToggle = document.getElementById('show-readme');
+const notesToggle = document.getElementById('show-notes');
+
+const readmeWindow = document.getElementById('readme-window');
+const notesWindow = document.querySelectorAll('#readme-window')[1]; 
+
+const closeReadme = document.getElementById('close-readme');
+const closeNotes = document.querySelectorAll('.close-button')[1]; 
+
+function playButtonSound() {
+
+    buttonClickSound.currentTime = 0;
+    buttonClickSound.volume = 0.8;
+
+    const playPromise = buttonClickSound.play();
+
+    if (playPromise !== undefined) {
+        playPromise.catch(error => {
+            console.log("Audio playback error:", error);
+        });
+    }
+}
+
+readmeToggle.addEventListener('click', function() {
+    playButtonSound();
+
+    readmeWindow.style.display = 'flex';
+    notesWindow.style.display = 'none';
+});
+
+readmeToggle.addEventListener('touchend', function(e) {
+    e.preventDefault(); 
+    playButtonSound();
+
+    readmeWindow.style.display = 'flex';
+    notesWindow.style.display = 'none';
+});
+
+notesToggle.addEventListener('click', function() {
+    playButtonSound();
+
+    notesWindow.style.display = 'flex';
+    readmeWindow.style.display = 'none';
+});
+
+notesToggle.addEventListener('touchend', function(e) {
+    e.preventDefault(); 
+    playButtonSound();
+
+    notesWindow.style.display = 'flex';
+    readmeWindow.style.display = 'none';
+});
+
+if (closeReadme) {
+    closeReadme.addEventListener('click', function() {
+        playButtonSound();
+        readmeWindow.style.display = 'none';
+    });
+
+    closeReadme.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        playButtonSound();
+        readmeWindow.style.display = 'none';
+    });
+}
+
+if (closeNotes) {
+    closeNotes.addEventListener('click', function() {
+        playButtonSound();
+        notesWindow.style.display = 'none';
+    });
+
+    closeNotes.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        playButtonSound();
+        notesWindow.style.display = 'none';
+    });
+}
+
+document.body.addEventListener('touchstart', function() {
+
+    if (buttonClickSound.paused) {
+        buttonClickSound.volume = 0;
+        buttonClickSound.play().then(() => {
+            buttonClickSound.pause();
+            buttonClickSound.volume = 0.8;
+        }).catch(err => console.log("Initial audio setup error:", err));
+    }
+}, { once: true });
+});
+   </script>
   <script src="start-and-landing.js"></script>
 </body>
 </html>

@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Elements
+
     const landingAnimation = document.getElementById('landing-animation');
     const startButton = document.getElementById('start-button');
-    const blackOverlay = document.createElement('div'); // Create overlay dynamically
+    const blackOverlay = document.createElement('div'); 
     blackOverlay.id = 'black-overlay';
     blackOverlay.className = 'black-overlay';
     document.body.appendChild(blackOverlay);
-    
+
     const videoScreen = document.getElementById('video-screen');
     const introVideo = document.getElementById('intro-video');
     const skipButton = document.getElementById('skip-button');
@@ -15,37 +15,38 @@ document.addEventListener('DOMContentLoaded', function() {
     const backgroundMusic = document.getElementById('background-music');
     const musicToggle = document.getElementById('music-toggle');
     const pianoSprite = document.getElementById('piano-sprite');
-    
-    // State variables
-    let musicEnabled = false;
+
+    let musicEnabled = true; 
     let audioInitialized = false;
 
-    // Initialize everything
     function initialize() {
-        // Set initial states
+
         document.body.style.opacity = '1';
         landingAnimation.style.display = 'flex';
         videoScreen.style.display = 'none';
         loadingScreen.style.display = 'none';
         blackOverlay.style.opacity = '0';
-        
-        // Prepare audio elements
+
         backgroundMusic.volume = 0.5;
         buttonClickSound.volume = 0.5;
         if (introVideo) introVideo.volume = 0.5;
-        
-        // Set up event listeners
+
         setupEventListeners();
-        
-        // Fade in landing animation
+
         setTimeout(() => {
             landingAnimation.style.opacity = '1';
         }, 100);
+
+        musicToggle.textContent = "MUSIC: ON";
+
+        setTimeout(() => {
+            initAudio();
+            updateMusicState();
+        }, 200);
     }
 
-    // Set up all event listeners
     function setupEventListeners() {
-        // Music toggle
+
         musicToggle.addEventListener('click', function() {
             playSound(buttonClickSound);
             initAudio();
@@ -53,14 +54,13 @@ document.addEventListener('DOMContentLoaded', function() {
             updateMusicState();
         });
 
-        // Start button
         startButton.addEventListener('click', function() {
             playSound(buttonClickSound);
             initAudio();
+            fadeOutMusic();
             startSequence();
         });
 
-        // Skip button
         if (skipButton) {
             skipButton.addEventListener('click', function() {
                 playSound(buttonClickSound);
@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Spacebar to skip
         document.addEventListener('keydown', function(event) {
             if (event.code === 'Space' && videoScreen.style.display === 'block') {
                 playSound(buttonClickSound);
@@ -76,31 +75,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Initial audio unlock
         document.addEventListener('click', initAudio, { once: true });
         document.addEventListener('keydown', initAudio, { once: true });
     }
 
-    // Initialize audio system
     function initAudio() {
         if (audioInitialized) return;
         audioInitialized = true;
-        
-        // Resume audio context if suspended
+
         if (backgroundMusic.context) {
             backgroundMusic.context.resume();
         }
-        
-        // Update music state if enabled
-        if (musicEnabled) {
-            updateMusicState();
-        }
+
+        updateMusicState();
     }
 
-    // Update music playback state
     function updateMusicState() {
         musicToggle.textContent = musicEnabled ? "MUSIC: ON" : "MUSIC: OFF";
-        
+
         try {
             if (musicEnabled) {
                 backgroundMusic.play().catch(e => {
@@ -116,10 +108,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Play sound helper
+    function fadeOutMusic() {
+        if (!musicEnabled || !backgroundMusic) return;
+
+        const fadeInterval = 50; 
+        const fadeStep = 0.05; 
+        const originalVolume = backgroundMusic.volume;
+
+        const fadeOutTimer = setInterval(() => {
+            if (backgroundMusic.volume > fadeStep) {
+                backgroundMusic.volume -= fadeStep;
+            } else {
+                clearInterval(fadeOutTimer);
+                backgroundMusic.pause();
+                backgroundMusic.volume = originalVolume; 
+            }
+        }, fadeInterval);
+    }
+
     function playSound(sound) {
         if (!sound) return;
-        
+
         try {
             sound.currentTime = 0;
             sound.play().catch(e => console.error("Sound error:", e));
@@ -128,29 +137,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Start the main sequence
     function startSequence() {
-        // Fade to black
+
         blackOverlay.style.opacity = '1';
         blackOverlay.style.pointerEvents = 'auto';
 
         setTimeout(() => {
             landingAnimation.style.display = 'none';
             videoScreen.style.display = 'block';
-            
+
             setTimeout(() => {
                 videoScreen.style.opacity = '1';
                 blackOverlay.style.opacity = '0';
                 blackOverlay.style.pointerEvents = 'none';
-                
-                // Play video
+
                 if (introVideo) {
                     introVideo.play().catch(e => {
                         console.error("Video play error:", e);
                         skipVideo();
                     });
-                    
-                    // Handle video end
+
                     introVideo.addEventListener('ended', finishIntroSequence, { once: true });
                 } else {
                     skipVideo();
@@ -159,7 +165,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
-    // Skip video
     function skipVideo() {
         if (introVideo) {
             introVideo.pause();
@@ -168,32 +173,29 @@ document.addEventListener('DOMContentLoaded', function() {
         finishIntroSequence();
     }
 
-    // Finish the sequence
     function finishIntroSequence() {
         blackOverlay.style.opacity = '1';
         blackOverlay.style.pointerEvents = 'auto';
-        
+
         setTimeout(() => {
             if (videoScreen) {
                 videoScreen.style.display = 'none';
                 videoScreen.style.opacity = '0';
             }
-            
+
             loadingScreen.style.display = 'flex';
             loadingScreen.style.opacity = '1';
-            
-            // Show the piano sprite
+
             pianoSprite.classList.remove('hidden');
-            
+
             setTimeout(() => {
                 blackOverlay.style.opacity = '0';
                 blackOverlay.style.pointerEvents = 'none';
-                
-                // Fade in the piano sprite
+
                 setTimeout(() => {
                     pianoSprite.style.opacity = '1';
                 }, 500);
-                
+
                 setTimeout(() => {
                     window.location.href = 'for-my-cute-bf/index.html';
                 }, 5000);
@@ -201,6 +203,82 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
-    // Start everything
     initialize();
+
+    const startButtonContainer = document.querySelector('.option[data-action="start"]');
+    const musicToggleContainer = document.querySelector('.toggle-container');
+
+    const musicHandCursor = musicToggleContainer.querySelector('.hand-cursor');
+    if (musicHandCursor) {
+
+        musicHandCursor.className = 'animated-hand-cursor';
+
+        musicHandCursor.style.animation = 'handAnimation 2s ease-in-out infinite';
+    }
+
+    const selectableButtons = [
+        { element: startButton, container: startButtonContainer },
+        { element: musicToggle, container: musicToggleContainer }
+    ];
+
+    let currentSelectedIndex = 0; 
+
+    function selectButton(index) {
+
+        selectableButtons.forEach((item, i) => {
+            if (i === 0) { 
+                const startHandCursor = item.container.querySelector('.animated-hand-cursor');
+                if (startHandCursor) startHandCursor.style.visibility = 'hidden';
+            } else { 
+                const musicHandCursor = item.container.querySelector('.animated-hand-cursor');
+                if (musicHandCursor) musicHandCursor.style.visibility = 'hidden';
+            }
+        });
+
+        if (index === 0) { 
+            const startHandCursor = selectableButtons[index].container.querySelector('.animated-hand-cursor');
+            if (startHandCursor) startHandCursor.style.visibility = 'visible';
+        } else { 
+            const musicHandCursor = selectableButtons[index].container.querySelector('.animated-hand-cursor');
+            if (musicHandCursor) musicHandCursor.style.visibility = 'visible';
+        }
+
+        currentSelectedIndex = index;
+    }
+
+    selectButton(currentSelectedIndex);
+
+    document.addEventListener('keydown', function(event) {
+
+        if (landingAnimation.style.display === 'none') {
+            return;
+        }
+
+        switch(event.code) {
+            case 'ArrowUp':
+            case 'ArrowDown':
+                playSound(buttonClickSound);
+
+                currentSelectedIndex = currentSelectedIndex === 0 ? 1 : 0;
+                selectButton(currentSelectedIndex);
+                break;
+
+            case 'Enter':
+                event.preventDefault();
+                playSound(buttonClickSound);
+
+                if (currentSelectedIndex === 0) {
+
+                    initAudio();
+                    fadeOutMusic();
+                    startSequence();
+                } else {
+
+                    initAudio();
+                    musicEnabled = !musicEnabled;
+                    updateMusicState();
+                }
+                break;
+        }
+    });
 });
